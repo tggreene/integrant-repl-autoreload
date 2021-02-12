@@ -1,0 +1,8 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.2"}}
+ :aliases {:uberjar {:replace-deps !
+                     :exec-fn hf.depstar/uberjar
+                     :exec-args {:aot true
+                                 :jar "tggreene-integrant-repl-autoreload.jar"
+                                 :main-class "integrant-repl-autoreload.core"
+                                 :sync-pom true}}}}
