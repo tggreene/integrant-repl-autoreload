@@ -6,7 +6,7 @@ Simple integrant autoreloading using hawk, borrowed from duct
 
 [![Clojars Project](https://img.shields.io/clojars/v/tggreene/integrant-repl-autoreload.svg)](https://clojars.org/tggreene/integrant-repl-autoreload)
 
-    [tggreene/integrant-repl-autoreload "0.1.0"]
+    [tggreene/integrant-repl-autoreload "0.2.0"]
 
 ## Usage
 
