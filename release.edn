@@ -1,0 +1,3 @@
+{:group-id "com.github.tggreene"
+ :artifact-id "integrant-repl-autoreload"
+ :scm-url "https://github.com/tggreene/integrant-repl-autoreload"}
