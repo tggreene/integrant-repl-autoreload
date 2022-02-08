@@ -10,7 +10,7 @@ Simple integrant autoreloading using hawk, borrowed from duct
 
 ## Usage
 
-Require in your dev namespace:
+Require in your dev (or user) namespace:
 
     (ns dev
       (:require [integrant.repl :as igr]
@@ -21,6 +21,8 @@ Run alongside integrant-repl:
     (igr/set-prep! (some system prep))
     (igr/go)
     (igr-auto/start-auto-reset)
+    ;; or
+    (igr-auto/start-auto-reset ["src" "resources"])
 
 Switch back to manual reset:
 

@@ -10,11 +10,11 @@
     ctx))
 
 (defn- clojure-file? [_ {:keys [file]}]
-  (re-matches #"[^.].*(\.clj|\.edn)$" (.getName file)))
+  (re-matches #"[^.].*(\.clj\w?|\.edn)$" (.getName file)))
 
 (defn start-auto-reset
-  "Automatically reset the system when a Clojure or edn file is changed in
-  `src` or `resources`."
+  "Automatically reset the system when a Clojure or edn file is changed, pass a
+  vector of relative paths or `[\"src\" \"resources\"]` by default"
   ([]
    (start-auto-reset ["src" "resources"]))
   ([paths]
