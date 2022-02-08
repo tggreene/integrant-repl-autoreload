@@ -1,9 +1,6 @@
-(ns integrant-repl-autoreload.core
-  (:require [clojure.tools.namespace.repl :as repl]
-            [hawk.core :as hawk]
+(ns ^{:clojure.tools.namespace.repl/load false} integrant-repl-autoreload.core
+  (:require [hawk.core :as hawk]
             [integrant.repl :as igr]))
-
-(repl/disable-reload! (find-ns 'integrant-repl-autoreload.core))
 
 (defonce hawk-watcher nil)
 
