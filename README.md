@@ -15,7 +15,11 @@ components).
 
 [![Clojars Project](https://img.shields.io/clojars/v/tggreene/integrant-repl-autoreload.svg)](https://clojars.org/tggreene/integrant-repl-autoreload)
 
-    [tggreene/integrant-repl-autoreload "0.2.0"]
+    [com.github.tggreene/integrant-repl-autoreload "0.2.0"]
+
+Or deps.edn:
+
+    com.github.tggreene/integrant-repl-autoreload {:mvn/version "0.2.0"} 
 
 ## Usage
 
