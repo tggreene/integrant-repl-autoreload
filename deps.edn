@@ -1,5 +1,5 @@
 {:paths ["src"]
- :deps {hawk/hawk {:mvn/version "0.2.11"}
+ :deps {com.nextjournal/beholder {:mvn/version "1.0.0"}
         integrant/repl {:mvn/version "0.3.2"}
         org.clojure/clojure {:mvn/version "1.10.2"}}
  :aliases {:release

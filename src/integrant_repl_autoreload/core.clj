@@ -1,16 +1,16 @@
 (ns ^{:clojure.tools.namespace.repl/load false} integrant-repl-autoreload.core
-  (:require [hawk.core :as hawk]
-            [integrant.repl :as igr]))
+  (:require [integrant.repl :as igr]
+            [nextjournal.beholder :as beholder]))
 
-(defonce hawk-watcher nil)
+(defonce watcher nil)
 
-(defn- auto-reset-handler [ctx _event]
-  (binding [*ns* *ns*]
-    (integrant.repl/reset)
-    ctx))
+(defn- clojure-file? [path]
+  (re-matches #"[^.].*(\.clj\w?|\.edn)$" (-> path .getFileName .toString)))
 
-(defn- clojure-file? [_ {:keys [file]}]
-  (re-matches #"[^.].*(\.clj\w?|\.edn)$" (.getName file)))
+(defn- auto-reset-handler [event]
+  (when (clojure-file? (:path event))
+    (binding [*ns* *ns*]
+      (integrant.repl/reset))))
 
 (defn start-auto-reset
   "Automatically reset the system when a Clojure or edn file is changed, pass a
@@ -18,17 +18,15 @@
   ([]
    (start-auto-reset ["src" "resources"]))
   ([paths]
-   (alter-var-root #'hawk-watcher
+   (alter-var-root #'watcher
                    (fn [watcher]
                      (when-not (nil? watcher)
-                       (hawk/stop! watcher))
-                     (hawk/watch! [{:paths paths
-                                    :filter clojure-file?
-                                    :handler auto-reset-handler}])))))
+                       (beholder/stop watcher))
+                     (apply beholder/watch auto-reset-handler paths)))))
 
 (defn stop-auto-reset
   []
-  (alter-var-root #'hawk-watcher
+  (alter-var-root #'watcher
                   (fn [watcher]
                     (when-not (nil? watcher)
-                      (hawk/stop! watcher)))))
+                      (beholder/stop watcher)))))
