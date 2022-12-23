@@ -9,8 +9,7 @@
 
 (defn- auto-reset-handler [relevant-file? event]
   (when (relevant-file? (-> event :path .getFileName .toString))
-    (binding [*ns* *ns*]
-      (integrant.repl/reset))))
+    (integrant.repl/reset)))
 
 (defn- parse-options [path-or-options]
   (merge
